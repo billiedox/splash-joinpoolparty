@@ -4,7 +4,7 @@ Major features of the CMv3 such as Candy Guards are implemented & auto-detected.
 
 ### Preview
 
-![MINT PAGE](https://github.com/billiedox/splash-poolparty-cm-v3/blob/main/src/assets/images/Splash-Join-PoolParty.png)
+![MINT PAGE](https://github.com/billiedox/splash-joinpoolparty/tree/main/src/assets/images/Splash-Join-PoolParty.png)
 — Desktop preview.
 
 Preview JoinPoolParty live [here](https://joinpoolparty.io/).
