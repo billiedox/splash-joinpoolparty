@@ -440,7 +440,7 @@ const MintFlowDialog : FC<MintFlowDialogProps>=({
                             <div className='flow-step3-disconnect-row'>
                                 <div className='flow-step3-username'>
                                     <WalletIcon wallet={wallet}/>
-                                    { shortenPubkey(publicKey.toBase58()) }
+                                    {publicKey && shortenPubkey(publicKey.toBase58()) }
                                 </div>
                                 <Button className='flow-step3-disconnect-btn' onClick={e=>disconnectWallet(e)}><span>Disconnect</span></Button>
                             </div>
