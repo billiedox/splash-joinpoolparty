@@ -105,7 +105,7 @@ const MintFlowDialog : FC<MintFlowDialogProps>=({
     const [open, setOpen] = useState(false);
     const [discordName, setDiscordName] = useState('DISCORD');
     const [cookies, setCookie] = useCookies(["discord"]);
-    const [activeStep, setActiveStep] = useState(3);
+    const [activeStep, setActiveStep] = useState(1);
     const [walletsExpanded, setWalletsExpanded] = useState(false);
     const [title, setTitle] = useState('Connect Wallet');
     const [subtitle, setSubtitle] = useState('Step1 : Connect a Solana Wallet');
@@ -204,13 +204,13 @@ const MintFlowDialog : FC<MintFlowDialogProps>=({
         if (cookies['discord'] != undefined && cookies['discord'] != null)
             setDiscordName(cookies['discord']);
 
-        // if (connected && discordName === 'DISCORD') {
-        //     setActiveStep(2);
-        //     setWalletsExpanded(false);
-        // } else {
-        //     if (connected && discordName!== 'DISCORD')
-        //         setActiveStep(3);
-        // }
+        if (connected && discordName === 'DISCORD') {
+            setActiveStep(3);
+            setWalletsExpanded(false);
+        } else {
+            if (connected && discordName!== 'DISCORD')
+                setActiveStep(3);
+        }
     }, [connected, cookies, discordName])
 
     useEffect(()=>{
