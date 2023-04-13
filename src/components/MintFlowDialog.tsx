@@ -264,12 +264,12 @@ const MintFlowDialog : FC<MintFlowDialogProps>=({
         }
     }
 
-    const getInfo = async (code: any) => {
+    const getInfo = useCallback(async (code: any) => {
         const accessToken = await getToken(code);
         const userInfo = await getUserInfo(accessToken);
         setDiscordName(userInfo.username);
         setCookie("discord", userInfo.username);
-    }
+    }, [setCookie]);
 
     const followTwitter = useCallback((e: any)=>{
         e.preventDefault();
@@ -310,7 +310,7 @@ const MintFlowDialog : FC<MintFlowDialogProps>=({
             
             router.push('/');
         }
-    }, []);
+    }, [cookies, getInfo, popup, router]);
 
     const handleDiscordClick = useCallback(()=>{
         const p = window.open(process.env.NEXT_PUBLIC_DISCORD_AUTH_LINK, 'Discord Authentication', 'location,status,scrollbars,resizable,width=600, height=800');

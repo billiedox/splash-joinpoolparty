@@ -123,13 +123,13 @@ export default function useCandyMachineV3(
       merkles,
       verifyProof,
     };
-  }, [wallet.publicKey, candyMachineOpts.allowLists?.length]);
+  }, [wallet.publicKey, candyMachineOpts.allowLists]);
 
   const fetchCandyMachine = React.useCallback(async () => {
     return await mx.candyMachines().findByAddress({
       address: new PublicKey(candyMachineId),
     });
-  }, [candyMachineId]);
+  }, [candyMachineId, mx]);
 
   const refresh = React.useCallback(async () => {
     if (!wallet.publicKey) throw new Error("Wallet not loaded yet!");
@@ -346,7 +346,7 @@ export default function useCandyMachineV3(
         decimals: x.account.data.parsed.info.tokenAmount.decimals,
       }));
     })(wallet.publicKey).then(setAllTokens);
-  }, [mx, wallet.publicKey]);
+  }, [mx, wallet, connection]);
 
   React.useEffect(() => {
     refresh().catch((e) =>
@@ -388,7 +388,7 @@ export default function useCandyMachineV3(
       );
       setGuardsAndGroups(guards);
     })();
-  }, [wallet.publicKey, nftHoldings, proofMemo, candyMachine]);
+  }, [wallet.publicKey, nftHoldings, proofMemo, candyMachine, mx]);
 
   const prices = React.useMemo((): {
     default?: ParsedPricesForUI;
@@ -425,7 +425,7 @@ export default function useCandyMachineV3(
         }),
       {}
     );
-  }, [guardsAndGroups, tokenHoldings, balance]);
+  }, [guardsAndGroups, tokenHoldings, balance, candyMachine, wallet]);
 
   React.useEffect(() => {
     console.log({ guardsAndGroups, guardStates, prices });

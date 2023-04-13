@@ -310,7 +310,7 @@ export const TicketMintButton = ({
       isEnded ||
       !isActive ||
       mintCount > limit,
-    [loading, isSoldOut, isMinting, isEnded, !isActive]
+    [loading, isSoldOut, isMinting, isEnded, isActive, limit, mintCount]
   );
   return (
     <>

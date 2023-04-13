@@ -310,7 +310,7 @@ export const MultiMintButton = ({
       isEnded ||
       !isActive ||
       mintCount > limit,
-    [loading, isSoldOut, isMinting, isEnded, !isActive]
+    [loading, isSoldOut, isMinting, isEnded, isActive, mintCount, limit]
   );
   return (
     <div className="w-100">

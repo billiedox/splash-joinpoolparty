@@ -158,10 +158,6 @@ const Home = (props: HomeProps) => {
 		})();
 	}, [wallet, connection]);
 
-	useEffect(() => {
-		if (mintedItems?.length === 0) throwConfetti();
-	}, [mintedItems]);
-
 	const openOnSolscan = useCallback((mint) => {
 		window.open(
 			`https://solscan.io/address/${mint}${
@@ -181,7 +177,11 @@ const Home = (props: HomeProps) => {
 			spread: 70,
 			origin: { y: 0.6 },
 		});
-	}, [confetti]);
+	}, []);
+
+	useEffect(() => {
+		if (mintedItems?.length === 0) throwConfetti();
+	}, [mintedItems, throwConfetti]);
 
 	useEffect(() => {
 		console.log({ candyMachine: candyMachineV3.candyMachine });
