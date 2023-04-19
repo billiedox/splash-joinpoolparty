@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import Head from "next/head";
 import dynamic from "next/dynamic";
 const DynamicMain = dynamic(() => import('../src/Main'), {
   suspense: true,
@@ -7,9 +8,17 @@ const DynamicMain = dynamic(() => import('../src/Main'), {
 
 const IndexPage = ({}) => {
   return (
-    <Suspense fallback={`Loading...`}>
-      <DynamicMain />
-    </Suspense>
+    <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <Suspense fallback={`Loading...`}>
+        <DynamicMain />
+      </Suspense>
+    </>
   );
 };
 
